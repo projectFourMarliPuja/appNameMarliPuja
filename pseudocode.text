@@ -41,13 +41,14 @@
 
     6. Selection on change
     - prevent default
-    - get selection value ( select on change option:selected)
+    - get selection value ( select on change option:selected or user text if text)
     - getMovie()
+    - 
 
     7. App.Init
     -Call it all!!!
 
-
+    8. Call init in doc ready
 
 
 
