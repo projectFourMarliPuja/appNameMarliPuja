@@ -1,1 +1,57 @@
-Current time -
+1. Create HTML
+    
+    header>div.wrapper>section.titleContainer>h1{What are you in the mood for?}+p
+
+    main>div.wrapper>section.suggestionContainer> HTML WILL DYNAMICALLY GET ADDED HERE
+
+    footer>p{giving APi Credit}
+
+2. CSS
+
+3. MVP
+
+    SELECT GENRE
+
+    SELECT GRADING SCALE (POPULARITY, RECENT)
+
+    SUGGESTIONS POPULATE DYNAMICALLY
+
+4. STRETCH GOALS
+
+    Multiple Genres
+    Books API -- see if any genres overlap the organization of that data
+    Change Titles based on selections
+
+5. JS PSEUDO
+
+    1. Set-up Namespacing
+
+    2. Create object to hold project
+
+    3. Create variable to hold API key and based URL 
+
+    4. Add HTML with selections
+    - empty sectio ( .empty() )
+    - append HTML 'for each' movie
+    - add classes for css on the results
+
+    5. Searrch API query
+    - ajax call .then ( or async?)
+    - 
+
+    6. Selection on change
+    - prevent default
+    - get selection value ( select on change option:selected)
+    - getMovie()
+
+    7. App.Init
+    -Call it all!!!
+
+
+
+
+
+
+
+
+
