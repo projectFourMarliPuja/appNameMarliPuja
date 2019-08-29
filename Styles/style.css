@@ -5,3 +5,71 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 .visuallyHidden:not(:focus):not(:active) { position: absolute; width: 1px; height: 1px; margin: -1px;border: 0;padding: 0;white-space: nowrap;clip-path: inset(100%);clip: rect(00 0 0);overflow: hidden;}
+
+/* GENERAL STYLES */
+
+html{
+    font-size: 125%;
+    margin: 0;
+    padding: 0;   
+}
+.wrapper{
+    width: 90%;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+/* HEADER */
+h1{
+    font-size:4rem;
+    font-family: 'Alfa Slab One', cursive;
+    text-transform: uppercase;    
+    text-align: center;
+    margin: 30px 0 0 0;
+}
+h2{
+    font-size:3rem;
+    font-family: 'Great Vibes', cursive;
+    letter-spacing: 1.5px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* MAIN STYLES */
+
+form{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+select{
+    width: 25%;
+}
+
+.suggestionsContainer {
+    padding-top: 75px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.movieContainer {
+    width: 30%;
+    
+}
+
+.image {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* font-family: 'Alfa Slab One', cursive;
+
+font-family: 'Great Vibes', cursive;
+
+font-family: 'Cardo', serif; */
+
