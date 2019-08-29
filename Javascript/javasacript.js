@@ -31,16 +31,33 @@
               api_key: app.key,
               with_genres: genre,             
           }        
-      }).then( function(result) {
-          console.log("hi",result.results);
-          app.displayInfo(result.results);
+      }).then( function(res) {
+         const getItems = res.results;
+          console.log("opps",res.results);
+        //   console.log("hi",res.results);
+        const randy = app.getRandomItemFromArray(res.results);
+        const finalResults= [];
+        // push randy onto final results array
+          app.displayInfo(randy);
+
+         
+        console.log("random",getRandomItemFromArray);
       });
       
+      
+    
+      
   }
+  app.getRandomItemFromArray = function(getItems){
+    const randomNum = Math.floor(Math.random()* 
+    getItems.length);
+    return getItems[randomNum];
+}
 
   // Display data on the page
 
   app.displayInfo = function(suggestions) {
+      console.log(suggestions);
 
     suggestions.forEach((movie) => {
 
@@ -56,7 +73,7 @@
         $('section.suggestionsContainer').append(movieHTML);
     });
 
-
+    
   }
 
   // Start app
