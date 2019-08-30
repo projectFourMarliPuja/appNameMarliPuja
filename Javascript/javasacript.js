@@ -12,68 +12,68 @@
   app.collectInfo = function() {
       $('#genre').on('change', function() {
 
-          $('section.suggestionsContainer').empty();
+      $('section.suggestionsContainer').empty();
 
-          const genreNumber = $('option:selected').val();
+      const genreNumber = $('option:selected').val();
 
-          app.getInfo(genreNumber);
-      });
-
+      app.getInfo(genreNumber);
+    });
   }
   // Make AJAX request with user inputted data
 
   app.getInfo = function(genre) {
-      $.ajax({
-          url: app.url,
-          method: `GET`,
-          dataType: `json`,
-          data: {
-              api_key: app.key,
-              with_genres: genre,             
-          }        
-      }).then( function(res) {
-         const getItems = res.results;
-          console.log("opps",res.results);
-        //   console.log("hi",res.results);
-        const randy = app.getRandomItemFromArray(res.results);
-        const finalResults= [];
-        // push randy onto final results array
-          app.displayInfo(randy);
 
-         
-        console.log("random",getRandomItemFromArray);
-      });
+    $.ajax({
+      url: app.url,
+      method: `GET`,
+      dataType: `json`,
+      data: {
+          api_key: app.key,
+          with_genres: genre,
+          original_language: "en"             
+      }     
+
+    }).then( function(res) {
       
+      const originalGenreArray = res.results;
+      const finalResults = new Set;
+      console.log(originalGenreArray)
       
-    
+      // Created a loop that runs the getRandomArray function while the finalResults set has less than 5 items
+      for (let i =  0; finalResults.size <= 5; i++) {
+        let randy = app.getRandomItemFromArray(res.results);
+        finalResults.add(randy);
+        console.log(finalResults)
+      }
+  
+      // console.log("final array", finalResults);
       
+      app.displayInfo(randy);
+      
+    });
   }
-  app.getRandomItemFromArray = function(getItems){
-    const randomNum = Math.floor(Math.random()* 
-    getItems.length);
-    return getItems[randomNum];
-}
 
+  app.getRandomItemFromArray = function(originalGenreArray){
+    const randomNum = Math.floor(Math.random()*originalGenreArray.length);
+    return originalGenreArray[randomNum];
+  }
   // Display data on the page
 
   app.displayInfo = function(suggestions) {
-      console.log(suggestions);
-
-    suggestions.forEach((movie) => {
-
-        const movieHTML = 
-                        `<div class="movieContainer">
-                            <div class="posterContainer">
-                                <img src="https://image.tmdb.org/t/p/w185/${movie.poster_path}">
-                            </div>
-                            <p>${movie.title}</p>
-                            <p>Released: ${movie.release_date}</p>
-                            <p>${movie.overview}</p>
-                        </div>`;
-        $('section.suggestionsContainer').append(movieHTML);
-    });
-
+    console.log("Suggestions with randy", suggestions);
     
+    suggestions.forEach((movie) => {
+      const movieHTML = 
+        `<div class="movieContainer">
+         <div class="posterContainer">
+         <img src="https://image.tmdb.org/t/p/w185/${movie.poster_path}">
+         </div>
+          <p>${movie.title}</p>
+          <p>Released: ${movie.release_date}</p>
+          <p>${movie.overview}</p>
+         </div>`;
+      $('section.suggestionsContainer').append(movieHTML);
+    });  
   }
 
   // Start app
@@ -83,7 +83,6 @@
   }
 
   $(function() {
-
     app.init();
 
   });
