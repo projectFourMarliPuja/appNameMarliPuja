@@ -56,16 +56,31 @@ select{
 
 
 .movieContainer {
-    width: 30%;
+    width: 32%;
+    text-align: center;
+    margin: 50px 0;
     
 }
 
-.image {
+.posterContainer {
+    width: 100%;
+    position: relative;
+}
+
+img {
 	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+
+div.info {
+    width: 100%;
+    background: white;
+    color: black;
+    align-items: center;
+}
+
 
 /* font-family: 'Alfa Slab One', cursive;
 

@@ -1,58 +1,68 @@
 
 
-  // Create app namespace to hold all methods
+  // App holds all methods
 
   const app = {};
 
   app.key = `b78c454afdc721700c66d60072c8ba45`;
   app.url = `https://api.themoviedb.org/3/discover/movie?`;
-
-  // Collect user input
+  //Queries return 500 pages so this will pick a random page from the results
+  app.randomPage = Math.floor(Math.random()*6);
+ 
+  // User input collected
 
   app.collectInfo = function() {
-      $('#genre').on('change', function() {
+    $('#genre').on('change', function(e) {
+      e.preventDefault(e);
+      $('section.suggestionsContainer').empty();
+      $('#genre').attr('disabled', 'true');
 
+      app.genreNumber = $('option:selected').val();
+      app.getInfo(app.genreNumber + ',');
+    });
+
+    $('#genreTwo').on('change', function(e) {
+      e.preventDefault(e);
+      $('.two').remove(app.genreNumber);
       $('section.suggestionsContainer').empty();
 
-      const genreNumber = $('option:selected').val();
-
-      app.getInfo(genreNumber);
+      app.genreNumberTwo = $('option.two:selected').val();
+      app.getInfo(app.genreNumberTwo+","+app.genreNumber);
     });
   }
-  // Make AJAX request with user inputted data
+  // AJAX request with user inputted data
 
   app.getInfo = function(genre) {
-
+    console.log(genre);
     $.ajax({
       url: app.url,
       method: `GET`,
       dataType: `json`,
       data: {
           api_key: app.key,
+          original_language: "en",    
           with_genres: genre,
-          original_language: "en"             
+          page: app.randomPage,         
       }     
-
     }).then( function(res) {
-      
+      console.log(res);
       const originalGenreArray = res.results;
       const finalResults = new Set;
-      console.log(originalGenreArray)
       
-      // Created a loop that runs the getRandomArray function while the finalResults set has less than 5 items
+      // Created a loop that runs the getRandomItemFromArray until there are six unique items in set out of the 20 suggested originally
       for (let i =  0; finalResults.size <= 5; i++) {
-        let randy = app.getRandomItemFromArray(res.results);
-        finalResults.add(randy);
-        console.log(finalResults)
+        app.randy = app.getRandomItemFromArray(res.results);
+        finalResults.add(app.randy);
       }
   
       // console.log("final array", finalResults);
       
-      app.displayInfo(randy);
+      app.displayInfo(finalResults);
       
     });
   }
 
+  //getRandomItemFromArray chooses 1 random movie from the 20 in originalGenreArray 
   app.getRandomItemFromArray = function(originalGenreArray){
     const randomNum = Math.floor(Math.random()*originalGenreArray.length);
     return originalGenreArray[randomNum];
@@ -65,12 +75,13 @@
     suggestions.forEach((movie) => {
       const movieHTML = 
         `<div class="movieContainer">
-         <div class="posterContainer">
-         <img src="https://image.tmdb.org/t/p/w185/${movie.poster_path}">
-         </div>
-          <p>${movie.title}</p>
-          <p>Released: ${movie.release_date}</p>
-          <p>${movie.overview}</p>
+          <div class="posterContainer">
+            <div class="info">
+              <p>${movie.title}</p>
+              <p>Released: ${movie.release_date}</p>
+            <div>
+            <img src="https://image.tmdb.org/t/p/w185/${movie.poster_path}" alt="The poster for ${movie.title}">
+          </div>
          </div>`;
       $('section.suggestionsContainer').append(movieHTML);
     });  
