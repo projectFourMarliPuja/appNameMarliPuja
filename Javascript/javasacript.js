@@ -1,7 +1,6 @@
 
 
   // App holds all methods
-
   const app = {};
 
   app.key = `b78c454afdc721700c66d60072c8ba45`;
