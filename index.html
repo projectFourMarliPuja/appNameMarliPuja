@@ -26,6 +26,7 @@
     <main>
         <div class="wrapper">           
                 <form action="">
+                    <label for="genre" class="visuallyHidden"></label>
                     <select id="genre">
                         <option value="#">Select Genre</option>
                         <option value="28">Action</option>
@@ -38,8 +39,9 @@
                         <option value="53">Thriller</option>                          
                     </select>
 
-                    <select id="genreTwo" class="invisible">
-                        <option class="two" value="#">Select 2nd Genre</option>
+                    <label for="genreTwo" class="visuallyHidden"></label>
+                    <select id="genreTwo">
+                        <option class="two" value="#">Select Genre</option>
                         <option class="two" value="28">Action</option>
                         <option class="two" value="35">Comedy</option>
                         <option class="two" value="99">Documentary</option>
@@ -50,7 +52,9 @@
                         <option class="two" value="53">Thriller</option>    
                     </select>
                     
-                    <button>Reset</button>
+
+                    <label for="genre" class="visuallyHidden"></label>
+                    <button id="reset">Reset</button>
                 </form>           
 
             <section class="suggestionsContainer">
@@ -60,9 +64,9 @@
     </main>
 
     <!-- FOOTER STARTS -->
-    <footer>
-
-    </footer>
+    <!-- <footer>
+            <p>Copyright &copy; The Movie DB</p>
+    </footer> -->
 
     <!-- JS Link -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
