@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="styles/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Cardo|Great+Vibes&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Great+Vibes|Roboto&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/78737df333.js"></script>
 </head>
 
 <body>
@@ -16,8 +17,8 @@
     <header>
         <div class="wrapper">
             <section class="titleContainer">
-                <h1>Movie</br>Selector</h1>
-                <h2>What are you in the mood for?</h2>
+                <h1>Movie</br>Suggester</h1>
+                <h2 id="mood">What are you in the mood for?</h2>
             </section>
         </div>
     </header>
@@ -25,7 +26,7 @@
     <!-- MAIN STARTS -->
     <main>
         <div class="wrapper">           
-                <form action="">
+                <form>
                     <label for="genre" class="visuallyHidden"></label>
                     <select id="genre">
                         <option value="#">Select Genre</option>
@@ -38,10 +39,22 @@
                         <option value="10749">Romance</option>                        
                         <option value="53">Thriller</option>                          
                     </select>
+                    <div class="arrows" id="arrows">
+                        <i class="fas fa-long-arrow-alt-left"></i>
+                        <i class="fas fa-long-arrow-alt-left"></i>
+                        <i class="fas fa-long-arrow-alt-left"></i>
+                        <i class="fas fa-long-arrow-alt-left"></i>
+                        <i class="fas fa-long-arrow-alt-left"></i>
+                        <i class="fas fa-long-arrow-alt-left"></i>
+                        <i class="fas fa-long-arrow-alt-left"></i>
+                        <i class="fas fa-long-arrow-alt-left"></i>
+                        <i class="fas fa-long-arrow-alt-left"></i>
+                        <i class="fas fa-long-arrow-alt-left"></i>
+                    </div>
 
                     <label for="genreTwo" class="visuallyHidden"></label>
-                    <select id="genreTwo">
-                        <option class="two" value="#">Select Genre</option>
+                    <select id="genreTwo" class="invisible">
+                        <option class="two" value="#">Select 2nd Genre</option>
                         <option class="two" value="28">Action</option>
                         <option class="two" value="35">Comedy</option>
                         <option class="two" value="99">Documentary</option>
@@ -54,7 +67,7 @@
                     
 
                     <label for="genre" class="visuallyHidden"></label>
-                    <button id="reset">Reset</button>
+                    <button class="invisible" id="reset">Reset</button>
                 </form>           
 
             <section class="suggestionsContainer">

@@ -16,9 +16,10 @@
       $('section.suggestionsContainer').empty();
       $('#genre').attr('disabled', 'true');
       $('#genreTwo').removeClass('invisible');
-
+      $('#reset').removeClass('invisible');
+      $('#arrows').addClass('invisible');
+      $('#mood').addClass('invisible');
       app.genreNumber = $('option:selected').val();
-
       app.getInfo(app.genreNumber);
     });  
 
@@ -37,7 +38,6 @@
   // AJAX request with user inputted data
 
   app.getInfo = function(genre) {
-    console.log(genre);
     $.ajax({
       url: app.url,
       method: `GET`,
@@ -49,7 +49,6 @@
           page: app.randomPage,         
       }     
     }).then( function(res) {
-      console.log(res);
       const originalGenreArray = res.results;
       const finalResults = new Set;
       
@@ -58,7 +57,6 @@
         app.randy = app.getRandomItemFromArray(res.results);
         finalResults.add(app.randy);
       }  
-      // console.log("final array", finalResults);   
       app.displayInfo(finalResults);
     });
   }
@@ -71,14 +69,12 @@
   // Display data on the page
 
   app.displayInfo = function(suggestions) {
-    console.log("Suggestions with randy", suggestions);
-    
     suggestions.forEach((movie) => {
       const movieHTML = 
         `<div class="movieContainer">
           <div class="posterContainer">
             <div class="info">
-              <p>${movie.title}</p>
+              <p class="title">${movie.title}</p>
               <p>Released: ${movie.release_date}</p>
             <div>
             <img src="https://image.tmdb.org/t/p/w185/${movie.poster_path}" alt="The poster for ${movie.title}">

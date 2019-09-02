@@ -12,6 +12,7 @@ html{
     font-size: 125%;
     margin: 0;
     padding: 0;       
+    background: #FAEBD7;
 }
 .wrapper{
     width: 90%;
@@ -19,109 +20,168 @@ html{
     margin: 0 auto;
 }
 select,
-button,
-div.Info{
-    font-family: 'Cardo', serif;
+option,
+button{
+    font-family: 'Roboto', sans-serif;
+    text-transform: lowercase;
+    letter-spacing: 1.2px;
 }
 
 
-/* HEADER */
+/* HEADER STYLES */
+
 /* header {
     background-image: url("https://cdn2.vectorstock.com/i/1000x1000/14/21/movie-showing-with-popcorn-film-reel-and-drinks-vector-3811421.jpg");
     background-size: cover;
     height:45vw;   
     position: relative; */
 /* } */
-h1{
+
+h1 {
     font-size:4rem;
     font-family: 'Alfa Slab One', cursive;
     text-transform: uppercase;    
     text-align: center;
     margin: 30px 0 0 0;
+    text-shadow: 5px 5px gold;
 }
-h2{
+
+h2 {
+    width: 80%;
+    margin: 0 auto;
     font-size:3rem;
     font-family: 'Great Vibes', cursive;
     letter-spacing: 1.5px;
     text-align: center;
+    text-shadow: 2px 2px maroon;
+    color: white;
     margin-top: 10px;
+    background: url('../images/movie-popcorn.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 16px 0 20px 0;
+    border: 5px solid gold;
 }
 
 /* MAIN STYLES */
 
-form{
+/* FORM */
+
+form {
     width: 100%;
     display: flex;
-    justify-content: space-around;
-}
-select{
-    width: 25%;   
-    margin: 0 auto;
-    border: 2px solid darkgrey;
-    background-color: rgb(134, 211, 207);    
-}
-main .wrapper{
-    position: absolute;
-    top:60%;   
-    margin: 0 auto;       
-  }
-select:hover{
-    border: 2px solid blue;
-}
-button{
-    font-size: 25px;
-    background-color:yellowgreen;
-    border: none;
-    color:white;
-    padding: 10px 35px;
-    border-radius: 20px;
-    text-transform: uppercase;
-}
-button:hover{
-    background-color:lightgreen;
+    justify-content: space-between;
+    padding-top: 50px;
 }
 
+    /* ARROW ANIMATION ON FORM*/
+.arrows {
+        width: 70%;
+        display: flex;
+        justify-content: space-between
+    }    
+
+.fas {
+        font-size: 1.4rem;
+        animation: slide 1s ease-in-out infinite;
+        margin-left: 9px;
+        color: maroon;
+    }
+@keyframes slide {
+        0%,
+        100% {
+        transform: translate(0, 0);
+        }
+    
+        50% {
+        transform: translate(10px, 0);
+        }
+}
+
+button {
+    background: black;
+    color: white;
+    border: 3px solid gold;
+    box-shadow: 0px 5px #999;
+}
+
+button:focus {
+    border: 3px solid red;
+}
+
+button:hover {background-color:maroon}
+
+button:active {
+  background-color: gold;
+  box-shadow: 0 1px #666;
+  transform: translateY(4px);
+}
+
+.invisible {
+        display: none;
+}
+
+
+select {
+    width: 30%;
+}
+
+
+/* SUGGESTIONS */
 
 .suggestionsContainer {
-    padding-top: 75px;
     width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;    
-    margin-left:70px;                       
+    justify-content: space-between;
+                       
 }
 
-
 .movieContainer {
-    width: 32%;    
+    width: 30%;    
     text-align: center;
-    margin: 50px 0;       
-    border: 2px solid black;             
+    margin: 50px 0;
+    background: maroon;
+    border: 10px outset gold;
+         
 }
 
 .posterContainer {
     width: 100%;
-    position: relative;
-    border: 2px solid green;        
+    height: auto;     
+    background: none;        
 }
 
 img {
     width: 100%;
 	display: flex;
 	justify-content: center;
-    align-items: center;    
+    align-items: center;
+    padding: 10px;
+    border: 5px dotted gold; 
 }
 
 div.info {
-    width:100%;
-    font-size: 30px;    
-    background: white;
-    color:white;
+    padding: 10px;
+    color: white;
+    width:100%;   
+    background: none;
     align-items: center;
-    background:maroon;
-    padding-top: 3px;  
+    padding-top: 3px;
+    letter-spacing: 1.2px;  
 }
+
+.title {
+    font-family: 'Alfa Slab One', cursive;
+    color: gold;
+    font-size: 1.3rem;
+    text-shadow: 3px 3px black;
+}
+
+
+/* FOOTER */
+
 
 /* footer {
     color:white;
@@ -134,16 +194,18 @@ div.info {
     border: 2px solid black;
   } */
 
+
+
+
 /* MEDIA QUERIES */
 
 /* Portrait tablet and small desktops */
-@media (max-width: 940px) {
+@media (max-width: 980px) {
     h1{
-        font-size:3rem;
+        font-size:2.8rem;
     }
     h2{
         font-size: 2rem;
-        padding-top:40px;
     }
 }
 
@@ -153,10 +215,11 @@ div.info {
         font-size:2rem;
     }
     h2{
-        font-size: 1.5rem;
+        font-size: 1.6rem;
+        border: 3px solid gold;
     }
     form{
-       width:100%;       
+       width:100%;     
     }
     select{
         font-size:18px;
@@ -165,20 +228,44 @@ div.info {
         font-size: 20px;
         padding: 5px 25px;
     }
+    .movieContainer {
+        width: 47.5%;
+    }
 }
 
 /* Landscape phones and down */
-@media (max-width: 480px) {    
+@media (max-width: 580px) {    
+
+    h2 {
+        font-size: 1.1rem;
+    }
     select{
         font-size: 15px;
         width: 40%;                  
     }
+
+    form{
+        flex-direction: column;
+        padding-top: 20px;
+        padding-bottom: 30px;
+    }
+
+    .arrows {
+        display: none;
+    }
+
+    select {
+        width: 100%;
+        margin: 10px 0 10px 0;
+    }
+
     button{
         font-size: 15px;
         padding: 5px 20px;
-        position: absolute;
-        top: 45%;
-        margin: 0 auto;
-        margin-top: 60px;
+        margin: 10px 0 10px 0;
+    }
+
+    .movieContainer {
+        width: 100%;
     }
 }
