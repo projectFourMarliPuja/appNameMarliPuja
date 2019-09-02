@@ -7,28 +7,31 @@
   app.key = `b78c454afdc721700c66d60072c8ba45`;
   app.url = `https://api.themoviedb.org/3/discover/movie?`;
   //Queries return min 6 pages so this will pick a random page from the results
-  app.randomPage = Math.floor(Math.random()*6);
+  app.randomPage = Math.floor(Math.random()*6+1);
  
   // User input collected
-
   app.collectInfo = function() {
     $('#genre').on('change', function(e) {
       e.preventDefault();
       $('section.suggestionsContainer').empty();
       $('#genre').attr('disabled', 'true');
-
+      $('#genreTwo').removeClass('invisible');
 
       app.genreNumber = $('option:selected').val();
-      
-      app.getInfo(app.genreNumber + ',');
-    });
+
+      app.getInfo(app.genreNumber);
+    });  
 
     $('#genreTwo').on('change', function(e) {
       e.preventDefault();
-      $('section.suggestionsContainer').empty();
-
-      app.genreNumberTwo = $('option.two:selected').val();
-      app.getInfo(app.genreNumberTwo+","+app.genreNumber);
+      if ($('option.two:selected').val() !== $('option:selected').val()) {
+        $('section.suggestionsContainer').empty();
+        $('#genreTwo').attr('disabled', 'true');
+        app.genreNumberTwo = $('option.two:selected').val();
+        app.getInfo(app.genreNumberTwo+", "+app.genreNumber);
+      } else {
+        alert("Second selection must be different; choose another!")
+      }
     });
   }
   // AJAX request with user inputted data
@@ -54,12 +57,9 @@
       for (let i =  0; finalResults.size <= 5; i++) {
         app.randy = app.getRandomItemFromArray(res.results);
         finalResults.add(app.randy);
-      }
-  
-      // console.log("final array", finalResults);
-      
+      }  
+      // console.log("final array", finalResults);   
       app.displayInfo(finalResults);
-      
     });
   }
 
