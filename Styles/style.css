@@ -18,22 +18,22 @@ html{
     max-width: 1280px;
     margin: 0 auto;
 }
-option,
 select,
 button,
 div.Info{
     font-family: 'Cardo', serif;
 }
 
+
 /* HEADER */
-header {
+/* header {
     background-image: url("https://cdn2.vectorstock.com/i/1000x1000/14/21/movie-showing-with-popcorn-film-reel-and-drinks-vector-3811421.jpg");
     background-size: cover;
     height:45vw;   
-    position: relative;
-}
+    position: relative; */
+/* } */
 h1{
-    font-size:3.5rem;
+    font-size:4rem;
     font-family: 'Alfa Slab One', cursive;
     text-transform: uppercase;    
     text-align: center;
@@ -55,13 +55,15 @@ form{
     justify-content: space-around;
 }
 select{
-    width: 25%;
+    width: 25%;   
+    margin: 0 auto;
     border: 2px solid darkgrey;
+    background-color: rgb(134, 211, 207);    
 }
 main .wrapper{
     position: absolute;
     top:60%;   
-    margin: 0 auto;    
+    margin: 0 auto;       
   }
 select:hover{
     border: 2px solid blue;
@@ -76,7 +78,7 @@ button{
     text-transform: uppercase;
 }
 button:hover{
-    background-color:lightskyblue;
+    background-color:lightgreen;
 }
 
 
@@ -86,21 +88,22 @@ button:hover{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;       
+    justify-content: space-between;    
+    margin-left:70px;                       
 }
 
 
 .movieContainer {
-    width: 32%;
+    width: 32%;    
     text-align: center;
     margin: 50px 0;       
-    border: 2px solid black;        
+    border: 2px solid black;             
 }
 
 .posterContainer {
     width: 100%;
     position: relative;
-    border: 2px solid green;    
+    border: 2px solid green;        
 }
 
 img {
@@ -111,20 +114,71 @@ img {
 }
 
 div.info {
-    width: 100%;
-    font-size: 30px;
+    width:100%;
+    font-size: 30px;    
     background: white;
     color:white;
     align-items: center;
     background:maroon;
-    padding-top: 3px;    
-    /* border: 2px solid red; */
+    padding-top: 3px;  
+   
+}
+/* footer {
+    color:white;
+    background:blue;
+    margin: 0 auto;
+    text-align: center;
+    position: absolute;
+    text-align: center;
+    top: 90%;
+    border: 2px solid black;
+  } */
+
+/* MEDIA QUERIES */
+
+/* Portrait tablet and small desktops */
+@media (max-width: 940px) {
+    h1{
+        font-size:3rem;
+    }
+    h2{
+        font-size: 2rem;
+        padding-top:40px;
+    }
 }
 
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+    h1{
+        font-size:2rem;
+    }
+    h2{
+        font-size: 1.5rem;
+    }
+    form{
+       width:100%;       
+    }
+    select{
+        font-size:18px;
+    }
+    button{
+        font-size: 20px;
+        padding: 5px 25px;
+    }
+}
 
-/* font-family: 'Alfa Slab One', cursive;
-
-font-family: 'Great Vibes', cursive;
-
-font-family: 'Cardo', serif; */
-
+/* Landscape phones and down */
+@media (max-width: 480px) {    
+    select{
+        font-size: 15px;
+        width: 40%;                  
+    }
+    button{
+        font-size: 15px;
+        padding: 5px 20px;
+        position: absolute;
+        top: 45%;
+        margin: 0 auto;
+        margin-top: 60px;
+    }
+}
