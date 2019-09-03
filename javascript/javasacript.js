@@ -7,7 +7,8 @@
   app.url = `https://api.themoviedb.org/3/discover/movie?`;
   //Queries return min 6 pages so this will pick a random page from the results
   app.randomPage = Math.floor(Math.random()*6+1);
- 
+  app.gallerySection = document.getElementById('scrollToContainer');
+
   // User input collected
   app.collectInfo = function() {
     $('#genre').on('change', function(e) {
@@ -29,6 +30,11 @@
         $('#genreTwo').attr('disabled', 'true');
         app.genreNumberTwo = $('option.two:selected').val();
         app.getInfo(app.genreNumberTwo+", "+app.genreNumber);
+        //Smooth Scroll on second selection
+        const position = $("#form").offset().top;
+        $("body, html").animate({
+          scrollTop: position
+      })
       } else {
         alert("Second selection must be different; choose another!")
       }
