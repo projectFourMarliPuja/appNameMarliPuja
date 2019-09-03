@@ -59,7 +59,7 @@
       
       // Created a loop that runs the getRandomItemFromArray until there are six unique items in set out of the 20 suggested originally
       for (let i =  0; finalResults.size <= 5; i++) {
-        app.randy = app.getRandomItemFromArray(res.results);
+        app.randy = app.getRandomItemFromArray(originalGenreArray);
         finalResults.add(app.randy);
       }  
       app.displayInfo(finalResults);
